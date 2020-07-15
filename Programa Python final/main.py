@@ -1,32 +1,36 @@
+#Matriz para imprimir
 HorarioMatriz = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
 
 
 
 TerminarProceso = 0
 
+
+#Intro
+print (" ")
+print ("Bienvenido a la pagina de reservación de visitas guiadas por la UTEC")
+print (" ")
+
+print ("Horario de atención:")
+print ("Lunes - Viernes")
+print ("8:00 AM - 6:00 PM")
+print (" ")
+
+print ("Todas las visitas guiadas tienen una duración de 2 horas")
+print (" ")
+
+#Nombre
+InputNombre = str(input("Para empezar ingrese su nombre: "))
+print (" ")
+#Email
+EmailUsuario = input("Ingrese su correo electronico: ")
+print (" ")
+#Telefono
+Telefono = input("Ingrese su número telefónico: ")
+print (" ")
+
+#Loop While para repetir la reserva
 while TerminarProceso < 1:
-  #Intro
-  print (" ")
-  print ("Bienvenido a la pagina de reservación de visitas guiadas por la UTEC")
-  print (" ")
-
-  print ("Horario de atención:")
-  print ("Lunes - Viernes")
-  print ("8:00 AM - 6:00 PM")
-  print (" ")
-
-  print ("Todas las visitas guiadas tienen una duración de 2 horas")
-  print (" ")
-
-  #Nombre
-  InputNombre = str(input("Para empezar ingrese su nombre: "))
-  print (" ")
-
-  EmailUsuario = input("Ingrese su correo electronico: ")
-  print (" ")
-
-  Telefono = input("Ingrese su número telefónico: ")
-  print (" ")
   #Fecha
   FechaMatriz = 0
   InputFecha = str(input("Para que día desearía hacer su reserva: "))
@@ -64,9 +68,11 @@ while TerminarProceso < 1:
   print("16:00 - 18:00")
   print (" ")
 
+  #Input Hora
   InputHora = input("Horario: ")
   NumeroHora = 0
 
+  #Conversor de hora a número para matriz
   if InputHora == "8:00 - 10:00":
     NumeroHora = 0
   elif InputHora == "10:00 - 12:00":
@@ -78,6 +84,7 @@ while TerminarProceso < 1:
   elif InputHora == "16:00 - 18:00":
     NumeroHora = 4
   
+  #Editor de archivo
   ArchivoCitas = open('citas.txt', "a")
   ArchivoCitas.write('---\n')
   ArchivoCitas.write('Nombre: ' + InputNombre.upper() + '\n')
@@ -91,6 +98,7 @@ while TerminarProceso < 1:
   CambioMatriz = []
   Verificador1 = HorarioMatriz[FechaMatriz]
 
+  #funcion
   def Exitosa(h):
     print ("¡Reservación exitosa!")
     print ("Datos de la reservación:")
@@ -99,35 +107,35 @@ while TerminarProceso < 1:
     print ("Hora:", h)
     
 
-
+  #print para matriz
   if Verificador1[NumeroHora] == 0:
     if InputHora == "8:00 - 10:00":
       CambioMatriz = HorarioMatriz [FechaMatriz]
-      CambioMatriz[0] = InputNombre
+      CambioMatriz[0] = 1
       HorarioMatriz[FechaMatriz] = CambioMatriz
       CambioMatriz = []
       Exitosa(InputHora)
     elif InputHora == "10:00 - 12:00":
       CambioMatriz = HorarioMatriz [FechaMatriz]
-      CambioMatriz[1] = InputNombre
+      CambioMatriz[1] = 1
       HorarioMatriz[FechaMatriz] = CambioMatriz
       CambioMatriz = []
       Exitosa(InputHora)
     elif InputHora == "12:00 - 14:00":
       CambioMatriz = HorarioMatriz [FechaMatriz]
-      CambioMatriz[2] = InputNombre
+      CambioMatriz[2] = 1
       HorarioMatriz[FechaMatriz] = CambioMatriz
       CambioMatriz = []
       Exitosa(InputHora)
     elif InputHora == "14:00 - 16:00":
       CambioMatriz = HorarioMatriz [FechaMatriz]
-      CambioMatriz[3] = InputNombre
+      CambioMatriz[3] = 1
       HorarioMatriz[FechaMatriz] = CambioMatriz
       CambioMatriz = []
       Exitosa(InputHora)
     elif InputHora == "16:00 - 18:00":
       CambioMatriz = HorarioMatriz [FechaMatriz]
-      CambioMatriz[4] = InputNombre
+      CambioMatriz[4] = 1
       HorarioMatriz[FechaMatriz] = CambioMatriz
       CambioMatriz = []
       Exitosa(InputHora)
@@ -138,10 +146,8 @@ while TerminarProceso < 1:
       print("SU ELECCIÓN NO SE ENCUENTRA EN LAS OPCIONES BRINDADAS")
       print ("POR FAVOR REINICIE EL PROGRAMA")
       sys.exit(1)
-  else: 
-    print ("Este horario ya ha sido tomado")
   print (" ")
-  
+  #repeticion del loop while
   print ("¿Desea hacer otra reserva?")
   print ("(Si - No)")
   Continuar = str(input(" "))
@@ -151,7 +157,6 @@ while TerminarProceso < 1:
     TerminarProceso = 0
   else:
     TerminarProceso = 2
-
+#final
 print("Muchas Gracias!")
-print("En caso tenga dudas o consultas comuniquese al (01) 3173900")
-
+print("En caso tenga dudas o consultas comuniquese al (01) 317 3900")
